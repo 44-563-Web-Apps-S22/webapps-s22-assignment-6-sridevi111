@@ -22,27 +22,61 @@
 <p id="result">This text will be replaced </p>
 <script> 
 let correct=0;
-let wrong=0;
-let s;
+let wrong =0;
+var count=0;
 function checkGuess(){
-    console.log("Getting form values")
-    name = document.getElementById("president_name").value
-    guess_name = document.getElementById("guess_president").value
-    confirmed = confirm("Are these the values? "+name+" and "+guess_name)
-    
-    ele = document.getElementById("result")
-    
-    if(name==guess_name){
-        alert("You got it right")
-        correct=correct+1
-        
-        ele.innerHTML = "\nCorrect: "+correct+"<br> Wrong :"+wrong
-    } else {
-        wrong=wrong+1
-        alert("Wrong President")
-        ele.innerHTML = "\nCorrect: "+correct+"<br> Wrong :"+wrong
-    }
+console.log("Getting form values")
+pass = document.getElementById("president_name").value
+phrase = document.getElementById("guess_president").value
+
+if(pass==phrase){
+count=0
+correct=correct+1
+alert("Access allowed")
+}
+else{
+if(count<3){
+wrong=wrong+1
+count=count+1
+alert("Access denied")
+}
+else {
+alert("Sorry ,Game Over")
+}
+}
+
+
+out = document.getElementById("result")
+out.innerHTML = "<h3>correct</h3>"+correct+"<br>"+"<h3>wrong</h3>"+wrong
 }
 </script>
+
+<div class="container">
+    <img src="Iago.jpg" height="200" width="200" onclick="newImage()" id="img" alt="image">
+    <script>
+    var usingImage=1
+    function newImage(){
+    out=document.getElementById("img")
+    switch(usingImage){
+    case 1:
+    out.src="Iago.jpg"
+    usingImage=usingImage+1
+    break;
+    case 2:
+    out.src="Lark.jpg"
+    usingImage=usingImage+1
+    break;
+    case 3:
+    out.src="Peacock.jpg"
+    usingImage=1
+    break;
+    default:
+    out.src="Peacock.jpg"
+    }
+    
+    }
+    </script>
+    </div>
+
 </body>
 </html>
